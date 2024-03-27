@@ -16,6 +16,6 @@ namespace CafeOtomasyon.Entities.Models
         public string Aciklama { get; set; }
         public DateTime Tarih { get; set; }
 
-        public Kullanicilar Kullanicilar { get; set; }
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }
