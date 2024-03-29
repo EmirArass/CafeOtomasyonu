@@ -25,6 +25,7 @@ namespace CafeOtomasyon.Entities.Models
         public DateTime KayitTarihi { get; set; }
         public bool AktiflikDurumu { get; set; }
 
-        public ICollection<KullaniciHareketleri> KullaniciHareketleri { get; set; }
+        public virtual ICollection<KullaniciHareketleri> KullaniciHareketleri { get; set; }
+        public virtual ICollection<Masalar> masalar { get; set; }
     }
 }

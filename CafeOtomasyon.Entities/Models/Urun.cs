@@ -28,6 +28,7 @@ namespace CafeOtomasyon.Entities.Models
         public string Resimler { get; set; }
 
 
-        public Menu Menu { get; set; }
+        public virtual Menu Menu { get; set; }
+        public virtual ICollection<MasaHareketleri> MasaHareketleri { get; set; }
     }
 }

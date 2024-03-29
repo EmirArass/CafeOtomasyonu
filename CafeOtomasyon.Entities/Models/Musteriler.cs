@@ -16,5 +16,6 @@ namespace CafeOtomasyon.Entities.Models
         public string Email { get; set; }
         public string Aciklama { get; set; }
         public DateTime Tarih { get; set; }
+        public virtual ICollection<Satislar> Satislar{ get; set; }
     }
 }

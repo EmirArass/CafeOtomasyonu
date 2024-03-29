@@ -19,7 +19,9 @@ namespace CafeOtomasyon.Entities.Models
         public DateTime EklenmeTarihi { get; set; }
         public DateTime SonIslemTarihi { get; set; }
         public string Islem { get; set; }
+        public string SatisKodu { get; set; }
         public int? KullaniciId { get; set; }                               // int'in sonundaki soru işareti null geçilebilir anlamında Nullable<int> şeklinde de kullanılabilir
-        public ICollection<MasaHareketleri> MasaHareketleri { get; set; }   
+        public virtual ICollection<MasaHareketleri> MasaHareketleri { get; set; }
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace CafeOtomasyon.Entities.Mapping
             this.Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(p => p.SatisKodu).HasColumnType("varchar").HasMaxLength(15);
             this.Property(p => p.Aciklama).HasColumnType("varchar").HasMaxLength(300);
+
+            this.HasOptional(s => s.Musteriler).WithMany(s => s.Satislar).HasForeignKey(s => s.MusteriId);
         }
     }
 }

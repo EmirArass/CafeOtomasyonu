@@ -19,6 +19,8 @@ namespace CafeOtomasyon.Entities.Mapping
             this.Property(p => p.MasaAdi).HasColumnType("varchar").HasMaxLength(15);
             this.Property(p => p.Aciklama).HasColumnType("varchar").HasMaxLength(300);
             this.Property(p => p.EklenmeTarihi).HasColumnType("date");
+
+            this.HasOptional(m => m.Kullanicilar).WithMany(m => m.masalar).HasForeignKey(m => m.KullaniciId);
         }
     }
 }

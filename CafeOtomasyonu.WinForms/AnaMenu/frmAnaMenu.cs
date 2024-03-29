@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CafeOtomasyonu.WinForms.Kullanicilar;
 using CafeOtomasyonu.WinForms.Masalar;
 using CafeOtomasyonu.WinForms.Menuler;
+using CafeOtomasyonu.WinForms.Musteriler;
 using CafeOtomasyonu.WinForms.Urunler;
 using DevExpress.XtraEditors;
 
@@ -53,9 +54,15 @@ namespace CafeOtomasyonu.WinForms.AnaMenu
             
         }
 
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            XtraForm frmmusteriler = new frmMusteriler();
+            FormGetir(frmmusteriler);
+        }
+
         private void btnMasaSiparis_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraForm frmmasadurumu = new frmMasaSiparisleri();
+            XtraForm frmmasadurumu = new frmMasaDurumu();
             FormGetir(frmmasadurumu);
         }
     }

@@ -13,10 +13,13 @@ namespace CafeOtomasyon.Entities.Models
     {
         public int Id { get; set; }
         public string SatisKodu { get; set; }
+        public int? MusteriId { get; set; }
         public decimal Tutar { get; set; }
+        public decimal IndirimToplami { get; set; }
         public decimal Odenen { get; set; }
         public decimal Kalan { get; set; }
         public string Aciklama { get; set; }
         public DateTime SonIslemTarihi { get; set; }
+        public virtual  Musteriler Musteriler  { get; set; }
     }
 }
