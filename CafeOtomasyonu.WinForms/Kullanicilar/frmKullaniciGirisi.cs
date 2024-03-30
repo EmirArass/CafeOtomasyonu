@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeOtomasyon.Entities.DataAccessLayer;
 using CafeOtomasyon.Entities.Models;
+using CafeOtomasyonu.WinForms.WinTools;
 
 namespace CafeOtomasyonu.WinForms.Kullanicilar
 {
@@ -83,7 +84,8 @@ namespace CafeOtomasyonu.WinForms.Kullanicilar
             if (context.Kullanicilar.Any(k=>k.KullaniciAdi == txtKullaniciAdi.Text && k.Parola == txtSifre.Text))
             {
                 giris = true;
-                //BilgileriKaydet();
+                BilgileriKaydet();
+                KullaniciAyarlari.kullaniciId = model.Id;
                 //    entity.KullaniciId = model.Id;
                 //    string aciklama = model.KullaniciAdi + "Adlı Kullanıcı Sisteme Giriş Yaptı";
                 //    kullanicihareketleridal.KullaniciHareketleriEkle(context, entity,aciklama);

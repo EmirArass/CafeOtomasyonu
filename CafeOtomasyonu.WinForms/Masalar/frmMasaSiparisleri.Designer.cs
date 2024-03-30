@@ -49,9 +49,9 @@
             this.calcIndirimliToplam = new DevExpress.XtraEditors.CalcEdit();
             this.calcIndirimOrani = new DevExpress.XtraEditors.CalcEdit();
             this.calcKalan = new DevExpress.XtraEditors.CalcEdit();
-            this.CalcToplam = new DevExpress.XtraEditors.CalcEdit();
+            this.calcToplam = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.calcIndirimToplamı = new DevExpress.XtraEditors.CalcEdit();
+            this.calcIndirimToplami = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.calcOdenen = new DevExpress.XtraEditors.CalcEdit();
@@ -68,9 +68,11 @@
             this.colSatisKodu1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMasaId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUrunId1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUrunAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMiktari1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBirimFiyati1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndirimTutari1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colmnTutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarih1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMasalar1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -104,8 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcIndirimliToplam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcIndirimOrani.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcKalan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CalcToplam.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcIndirimToplamı.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcToplam.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcIndirimToplami.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcOdenen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
@@ -188,6 +190,7 @@
             this.btnSiparisEkle.Size = new System.Drawing.Size(109, 64);
             this.btnSiparisEkle.TabIndex = 0;
             this.btnSiparisEkle.Text = "Sipariş Ekle";
+            this.btnSiparisEkle.Click += new System.EventHandler(this.btnSiparisEkle_Click);
             // 
             // lblBaslik
             // 
@@ -208,9 +211,9 @@
             this.panelControl1.Controls.Add(this.calcIndirimliToplam);
             this.panelControl1.Controls.Add(this.calcIndirimOrani);
             this.panelControl1.Controls.Add(this.calcKalan);
-            this.panelControl1.Controls.Add(this.CalcToplam);
+            this.panelControl1.Controls.Add(this.calcToplam);
             this.panelControl1.Controls.Add(this.labelControl7);
-            this.panelControl1.Controls.Add(this.calcIndirimToplamı);
+            this.panelControl1.Controls.Add(this.calcIndirimToplami);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.calcOdenen);
@@ -254,7 +257,7 @@
             this.calcIndirimOrani.Properties.Appearance.Options.UseForeColor = true;
             this.calcIndirimOrani.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcIndirimOrani.Properties.MaskSettings.Set("mask", "c");
+            this.calcIndirimOrani.Properties.MaskSettings.Set("mask", "P");
             this.calcIndirimOrani.Properties.NullText = "%0,00";
             this.calcIndirimOrani.Properties.UseMaskAsDisplayFormat = true;
             this.calcIndirimOrani.Size = new System.Drawing.Size(205, 34);
@@ -278,24 +281,24 @@
             this.calcKalan.Size = new System.Drawing.Size(205, 34);
             this.calcKalan.TabIndex = 10;
             // 
-            // CalcToplam
+            // calcToplam
             // 
-            this.CalcToplam.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.CalcToplam.Location = new System.Drawing.Point(1328, 7);
-            this.CalcToplam.Name = "CalcToplam";
-            this.CalcToplam.Properties.Appearance.BackColor = System.Drawing.Color.SeaGreen;
-            this.CalcToplam.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CalcToplam.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.CalcToplam.Properties.Appearance.Options.UseBackColor = true;
-            this.CalcToplam.Properties.Appearance.Options.UseFont = true;
-            this.CalcToplam.Properties.Appearance.Options.UseForeColor = true;
-            this.CalcToplam.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.calcToplam.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.calcToplam.Location = new System.Drawing.Point(1328, 7);
+            this.calcToplam.Name = "calcToplam";
+            this.calcToplam.Properties.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.calcToplam.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.calcToplam.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.calcToplam.Properties.Appearance.Options.UseBackColor = true;
+            this.calcToplam.Properties.Appearance.Options.UseFont = true;
+            this.calcToplam.Properties.Appearance.Options.UseForeColor = true;
+            this.calcToplam.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CalcToplam.Properties.MaskSettings.Set("mask", "c");
-            this.CalcToplam.Properties.NullText = "₺0,00";
-            this.CalcToplam.Properties.UseMaskAsDisplayFormat = true;
-            this.CalcToplam.Size = new System.Drawing.Size(205, 34);
-            this.CalcToplam.TabIndex = 11;
+            this.calcToplam.Properties.MaskSettings.Set("mask", "c");
+            this.calcToplam.Properties.NullText = "₺0,00";
+            this.calcToplam.Properties.UseMaskAsDisplayFormat = true;
+            this.calcToplam.Size = new System.Drawing.Size(205, 34);
+            this.calcToplam.TabIndex = 11;
             // 
             // labelControl7
             // 
@@ -312,23 +315,23 @@
             this.labelControl7.TabIndex = 2;
             this.labelControl7.Text = "İndirimli Toplam : ";
             // 
-            // calcIndirimToplamı
+            // calcIndirimToplami
             // 
-            this.calcIndirimToplamı.Location = new System.Drawing.Point(768, 7);
-            this.calcIndirimToplamı.Name = "calcIndirimToplamı";
-            this.calcIndirimToplamı.Properties.Appearance.BackColor = System.Drawing.Color.SeaGreen;
-            this.calcIndirimToplamı.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.calcIndirimToplamı.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.calcIndirimToplamı.Properties.Appearance.Options.UseBackColor = true;
-            this.calcIndirimToplamı.Properties.Appearance.Options.UseFont = true;
-            this.calcIndirimToplamı.Properties.Appearance.Options.UseForeColor = true;
-            this.calcIndirimToplamı.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.calcIndirimToplami.Location = new System.Drawing.Point(768, 7);
+            this.calcIndirimToplami.Name = "calcIndirimToplami";
+            this.calcIndirimToplami.Properties.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.calcIndirimToplami.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.calcIndirimToplami.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.calcIndirimToplami.Properties.Appearance.Options.UseBackColor = true;
+            this.calcIndirimToplami.Properties.Appearance.Options.UseFont = true;
+            this.calcIndirimToplami.Properties.Appearance.Options.UseForeColor = true;
+            this.calcIndirimToplami.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcIndirimToplamı.Properties.MaskSettings.Set("mask", "c");
-            this.calcIndirimToplamı.Properties.NullText = "₺0,00";
-            this.calcIndirimToplamı.Properties.UseMaskAsDisplayFormat = true;
-            this.calcIndirimToplamı.Size = new System.Drawing.Size(205, 34);
-            this.calcIndirimToplamı.TabIndex = 12;
+            this.calcIndirimToplami.Properties.MaskSettings.Set("mask", "c");
+            this.calcIndirimToplami.Properties.NullText = "₺0,00";
+            this.calcIndirimToplami.Properties.UseMaskAsDisplayFormat = true;
+            this.calcIndirimToplami.Size = new System.Drawing.Size(205, 34);
+            this.calcIndirimToplami.TabIndex = 12;
             // 
             // labelControl5
             // 
@@ -465,15 +468,18 @@
             this.colSatisKodu1,
             this.colMasaId1,
             this.colUrunId1,
+            this.colUrunAdi,
             this.colMiktari1,
             this.colBirimFiyati1,
             this.colIndirimTutari1,
+            this.colmnTutar,
             this.colAciklama1,
             this.colTarih1,
             this.colMasalar1,
             this.colUrun1});
             this.gridView1.GridControl = this.gridControlSiparisler;
             this.gridView1.Name = "gridView1";
+            this.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView1_RowCellStyle);
             // 
             // colSiparisSil
             // 
@@ -500,8 +506,6 @@
             this.colId1.FieldName = "Id";
             this.colId1.MinWidth = 25;
             this.colId1.Name = "colId1";
-            this.colId1.Visible = true;
-            this.colId1.VisibleIndex = 1;
             this.colId1.Width = 62;
             // 
             // colSatisKodu1
@@ -510,8 +514,6 @@
             this.colSatisKodu1.FieldName = "SatisKodu";
             this.colSatisKodu1.MinWidth = 25;
             this.colSatisKodu1.Name = "colSatisKodu1";
-            this.colSatisKodu1.Visible = true;
-            this.colSatisKodu1.VisibleIndex = 2;
             this.colSatisKodu1.Width = 93;
             // 
             // colMasaId1
@@ -520,8 +522,6 @@
             this.colMasaId1.FieldName = "MasaId";
             this.colMasaId1.MinWidth = 25;
             this.colMasaId1.Name = "colMasaId1";
-            this.colMasaId1.Visible = true;
-            this.colMasaId1.VisibleIndex = 3;
             // 
             // colUrunId1
             // 
@@ -529,9 +529,17 @@
             this.colUrunId1.FieldName = "UrunId";
             this.colUrunId1.MinWidth = 25;
             this.colUrunId1.Name = "colUrunId1";
-            this.colUrunId1.Visible = true;
-            this.colUrunId1.VisibleIndex = 4;
             this.colUrunId1.Width = 90;
+            // 
+            // colUrunAdi
+            // 
+            this.colUrunAdi.Caption = "Ürün Adı";
+            this.colUrunAdi.FieldName = "Urun.UrunAdi";
+            this.colUrunAdi.MinWidth = 25;
+            this.colUrunAdi.Name = "colUrunAdi";
+            this.colUrunAdi.Visible = true;
+            this.colUrunAdi.VisibleIndex = 1;
+            this.colUrunAdi.Width = 94;
             // 
             // colMiktari1
             // 
@@ -540,28 +548,50 @@
             this.colMiktari1.MinWidth = 25;
             this.colMiktari1.Name = "colMiktari1";
             this.colMiktari1.Visible = true;
-            this.colMiktari1.VisibleIndex = 5;
+            this.colMiktari1.VisibleIndex = 2;
             this.colMiktari1.Width = 91;
             // 
             // colBirimFiyati1
             // 
             this.colBirimFiyati1.Caption = "Birim Fiyatı";
+            this.colBirimFiyati1.DisplayFormat.FormatString = "C2";
+            this.colBirimFiyati1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBirimFiyati1.FieldName = "BirimFiyati";
             this.colBirimFiyati1.MinWidth = 25;
             this.colBirimFiyati1.Name = "colBirimFiyati1";
             this.colBirimFiyati1.Visible = true;
-            this.colBirimFiyati1.VisibleIndex = 6;
+            this.colBirimFiyati1.VisibleIndex = 3;
             this.colBirimFiyati1.Width = 83;
             // 
             // colIndirimTutari1
             // 
             this.colIndirimTutari1.Caption = "İndirim Tutarı";
+            this.colIndirimTutari1.DisplayFormat.FormatString = "C2";
+            this.colIndirimTutari1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colIndirimTutari1.FieldName = "IndirimTutari";
             this.colIndirimTutari1.MinWidth = 25;
             this.colIndirimTutari1.Name = "colIndirimTutari1";
+            this.colIndirimTutari1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "IndirimTutari", "SUM={0:C2}")});
             this.colIndirimTutari1.Visible = true;
-            this.colIndirimTutari1.VisibleIndex = 7;
+            this.colIndirimTutari1.VisibleIndex = 4;
             this.colIndirimTutari1.Width = 93;
+            // 
+            // colmnTutar
+            // 
+            this.colmnTutar.Caption = "Tutar";
+            this.colmnTutar.DisplayFormat.FormatString = "C2";
+            this.colmnTutar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colmnTutar.FieldName = "colmnTutar";
+            this.colmnTutar.MinWidth = 25;
+            this.colmnTutar.Name = "colmnTutar";
+            this.colmnTutar.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "colmnTutar", "SUM={0:C2}")});
+            this.colmnTutar.UnboundDataType = typeof(decimal);
+            this.colmnTutar.UnboundExpression = "[Miktari] * [BirimFiyati] - [IndirimTutari]";
+            this.colmnTutar.Visible = true;
+            this.colmnTutar.VisibleIndex = 5;
+            this.colmnTutar.Width = 94;
             // 
             // colAciklama1
             // 
@@ -570,7 +600,7 @@
             this.colAciklama1.MinWidth = 25;
             this.colAciklama1.Name = "colAciklama1";
             this.colAciklama1.Visible = true;
-            this.colAciklama1.VisibleIndex = 8;
+            this.colAciklama1.VisibleIndex = 6;
             this.colAciklama1.Width = 664;
             // 
             // colTarih1
@@ -580,7 +610,7 @@
             this.colTarih1.MinWidth = 25;
             this.colTarih1.Name = "colTarih1";
             this.colTarih1.Visible = true;
-            this.colTarih1.VisibleIndex = 9;
+            this.colTarih1.VisibleIndex = 7;
             this.colTarih1.Width = 121;
             // 
             // colMasalar1
@@ -764,8 +794,6 @@
             this.colId.FieldName = "Id";
             this.colId.MinWidth = 25;
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 1;
             this.colId.Width = 56;
             // 
             // colSatisKodu
@@ -775,7 +803,7 @@
             this.colSatisKodu.MinWidth = 25;
             this.colSatisKodu.Name = "colSatisKodu";
             this.colSatisKodu.Visible = true;
-            this.colSatisKodu.VisibleIndex = 2;
+            this.colSatisKodu.VisibleIndex = 1;
             this.colSatisKodu.Width = 81;
             // 
             // colOdemeTuru
@@ -785,17 +813,21 @@
             this.colOdemeTuru.MinWidth = 25;
             this.colOdemeTuru.Name = "colOdemeTuru";
             this.colOdemeTuru.Visible = true;
-            this.colOdemeTuru.VisibleIndex = 3;
+            this.colOdemeTuru.VisibleIndex = 2;
             this.colOdemeTuru.Width = 100;
             // 
             // colOdenen
             // 
             this.colOdenen.Caption = "Ödenen";
+            this.colOdenen.DisplayFormat.FormatString = "C2";
+            this.colOdenen.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOdenen.FieldName = "Odenen";
             this.colOdenen.MinWidth = 25;
             this.colOdenen.Name = "colOdenen";
+            this.colOdenen.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Odenen", "SUM={0:C2}")});
             this.colOdenen.Visible = true;
-            this.colOdenen.VisibleIndex = 4;
+            this.colOdenen.VisibleIndex = 3;
             this.colOdenen.Width = 74;
             // 
             // colAciklama
@@ -805,7 +837,7 @@
             this.colAciklama.MinWidth = 25;
             this.colAciklama.Name = "colAciklama";
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 5;
+            this.colAciklama.VisibleIndex = 4;
             this.colAciklama.Width = 949;
             // 
             // colTarih
@@ -815,7 +847,7 @@
             this.colTarih.MinWidth = 25;
             this.colTarih.Name = "colTarih";
             this.colTarih.Visible = true;
-            this.colTarih.VisibleIndex = 6;
+            this.colTarih.VisibleIndex = 5;
             this.colTarih.Width = 107;
             // 
             // panelControlOdemeler
@@ -857,6 +889,7 @@
             this.Controls.Add(this.groupIslemler);
             this.Name = "frmMasaSiparisleri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Masa Siparişleri";
             ((System.ComponentModel.ISupportInitialize)(this.groupIslemler)).EndInit();
             this.groupIslemler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -864,8 +897,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcIndirimliToplam.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcIndirimOrani.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcKalan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CalcToplam.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcIndirimToplamı.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcToplam.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcIndirimToplami.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcOdenen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
             this.navigationPane1.ResumeLayout(false);
@@ -900,9 +933,9 @@
         private DevExpress.XtraEditors.CalcEdit calcIndirimliToplam;
         private DevExpress.XtraEditors.CalcEdit calcIndirimOrani;
         private DevExpress.XtraEditors.CalcEdit calcKalan;
-        private DevExpress.XtraEditors.CalcEdit CalcToplam;
+        private DevExpress.XtraEditors.CalcEdit calcToplam;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.CalcEdit calcIndirimToplamı;
+        private DevExpress.XtraEditors.CalcEdit calcIndirimToplami;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.CalcEdit calcOdenen;
@@ -949,5 +982,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositorySiparisSil;
         private DevExpress.XtraGrid.Columns.GridColumn colOdemeSil;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryOdemeSil;
+        private DevExpress.XtraGrid.Columns.GridColumn colUrunAdi;
+        private DevExpress.XtraGrid.Columns.GridColumn colmnTutar;
     }
 }

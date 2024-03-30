@@ -37,11 +37,11 @@
             this.btnSil = new DevExpress.XtraEditors.SimpleButton();
             this.btnRezerveyeAyir = new DevExpress.XtraEditors.SimpleButton();
             this.btnMasaAc = new DevExpress.XtraEditors.SimpleButton();
-            this.btnYenile = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuzenle = new DevExpress.XtraEditors.SimpleButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnYenile = new DevExpress.XtraEditors.SimpleButton();
             this.btnSiparisler = new DevExpress.XtraEditors.SimpleButton();
             this.masalarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.groupIslemler)).BeginInit();
             this.groupIslemler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.masalarBindingSource)).BeginInit();
@@ -128,6 +128,7 @@
             this.btnRezerveyeAyir.Size = new System.Drawing.Size(135, 64);
             this.btnRezerveyeAyir.TabIndex = 0;
             this.btnRezerveyeAyir.Text = "Rezerveye Ayır";
+            this.btnRezerveyeAyir.Click += new System.EventHandler(this.btnRezerveyeAyir_Click);
             // 
             // btnMasaAc
             // 
@@ -138,15 +139,7 @@
             this.btnMasaAc.Size = new System.Drawing.Size(135, 64);
             this.btnMasaAc.TabIndex = 0;
             this.btnMasaAc.Text = "Masa Aç";
-            // 
-            // btnYenile
-            // 
-            this.btnYenile.ImageOptions.Image = global::CafeOtomasyonu.WinForms.Properties.Resources.refresh2_32x32;
-            this.btnYenile.Location = new System.Drawing.Point(428, 31);
-            this.btnYenile.Name = "btnYenile";
-            this.btnYenile.Size = new System.Drawing.Size(135, 64);
-            this.btnYenile.TabIndex = 0;
-            this.btnYenile.Text = "Yenile";
+            this.btnMasaAc.Click += new System.EventHandler(this.btnMasaAc_Click);
             // 
             // btnDuzenle
             // 
@@ -156,6 +149,23 @@
             this.btnDuzenle.Size = new System.Drawing.Size(101, 64);
             this.btnDuzenle.TabIndex = 0;
             this.btnDuzenle.Text = "Düzenle";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 76);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1548, 634);
+            this.flowLayoutPanel1.TabIndex = 13;
+            // 
+            // btnYenile
+            // 
+            this.btnYenile.ImageOptions.Image = global::CafeOtomasyonu.WinForms.Properties.Resources.refresh2_32x32;
+            this.btnYenile.Location = new System.Drawing.Point(428, 31);
+            this.btnYenile.Name = "btnYenile";
+            this.btnYenile.Size = new System.Drawing.Size(135, 64);
+            this.btnYenile.TabIndex = 0;
+            this.btnYenile.Text = "Yenile";
             // 
             // btnSiparisler
             // 
@@ -172,14 +182,6 @@
             // 
             this.masalarBindingSource.DataSource = typeof(CafeOtomasyon.Entities.Models.Masalar);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 76);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1548, 634);
-            this.flowLayoutPanel1.TabIndex = 13;
-            // 
             // frmMasaDurumu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -189,7 +191,7 @@
             this.Controls.Add(this.groupIslemler);
             this.Controls.Add(this.labelControl1);
             this.Name = "frmMasaDurumu";
-            this.Text = "frmMasaDurumlari";
+            this.Text = "Masa Durumları";
             ((System.ComponentModel.ISupportInitialize)(this.groupIslemler)).EndInit();
             this.groupIslemler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.masalarBindingSource)).EndInit();

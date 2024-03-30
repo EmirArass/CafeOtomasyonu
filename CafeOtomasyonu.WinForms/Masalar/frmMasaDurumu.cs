@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CafeOtomasyon.Entities.DataAccessLayer;
 using CafeOtomasyon.Entities.Models;
 namespace CafeOtomasyonu.WinForms.Masalar
 {
@@ -16,8 +17,10 @@ namespace CafeOtomasyonu.WinForms.Masalar
         private CafeContext context = new CafeContext();
         private CheckButton btnsender;
         private SatisKodu modelSatisKodu;
-        private object _SatisKodu;
+        private string _SatisKodu;
         private int _masaId;
+        private CafeOtomasyon.Entities.Models.Masalar masalar;
+        MasalarDAL masalardal = new MasalarDAL();
 
         public frmMasaDurumu()
         {
@@ -28,6 +31,8 @@ namespace CafeOtomasyonu.WinForms.Masalar
 
         public void MasalariGetir()
         {
+            flowLayoutPanel1.Controls.Clear();
+            context = new CafeContext();
             var model = context.Masalar.ToList();
             for (int i = 0; i < model.Count; i++)
             {
@@ -35,8 +40,8 @@ namespace CafeOtomasyonu.WinForms.Masalar
                 btn.Text = model[i].MasaAdi;
                 btn.Name = model[i].Id.ToString();
                 btn.Tag = model[i].SatisKodu;
-                btn.Height = 64;
-                btn.Width = 64;
+                btn.Height = 96;
+                btn.Width = 96;
                 flowLayoutPanel1.Controls.Add(btn);
                 if (model[i].RezerveDurmu && !model[i].Durumu)
                 {
@@ -64,16 +69,18 @@ namespace CafeOtomasyonu.WinForms.Masalar
         private void Btn_Click(object sender, EventArgs e)
         {
             btnsender = sender as CheckButton;
+            _masaId = Convert.ToInt32(btnsender.Name);
             DurumlariYenile();
-            if (btnsender.Appearance.BackColor == Color.DarkGreen)
+            if (btnsender.Appearance.BackColor == Color.DarkOrange)
+            {
+                btnMasaAc.Enabled = true;
+            }
+            else if (btnsender.Appearance.BackColor == Color.DarkGreen)
             {
                 btnMasaAc.Enabled = true;
                 btnRezerveyeAyir.Enabled = true;
             }
-            else if (btnsender.Appearance.BackColor == Color.DarkOrange)
-            {
-                btnMasaAc.Enabled = true;
-            }
+            
             else if (btnsender.Appearance.BackColor == Color.Red)
             {
                 btnSiparisler.Enabled = true;
@@ -82,9 +89,39 @@ namespace CafeOtomasyonu.WinForms.Masalar
 
         private void btnSiparisler_Click(object sender, EventArgs e)
         {
-            _masaId = Convert.ToInt32(btnsender.Name);
-            frmMasaSiparisleri frmmasasiparisleri = new frmMasaSiparisleri(masaId: _masaId, masaAdi: btnsender.Text);
+            _SatisKodu = btnsender.Tag.ToString();
+            frmMasaSiparisleri frmmasasiparisleri = new frmMasaSiparisleri(masaId: _masaId, masaAdi: btnsender.Text, satisKodu: _SatisKodu);
             frmmasasiparisleri.ShowDialog();
+            btnsender = null;
+            DurumlariYenile();
+            MasalariGetir();
+        }
+
+        private void btnMasaAc_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(btnsender.Text+ " Açılsın mı?","Bilgi",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                masalar = masalardal.GetByFilter(context, m => m.Id == _masaId);
+                masalar.SatisKodu = modelSatisKodu.SatisTanimi + modelSatisKodu.Sayi;
+                masalar.Durumu = true;
+                modelSatisKodu.Sayi++;
+                masalardal.Save(context);
+                btnsender = null;
+                DurumlariYenile();
+                MasalariGetir();    
+            }
+        }
+
+        private void btnRezerveyeAyir_Click(object sender, EventArgs e)
+        {
+            frmMasaRezervasyonu frmmasarezervasyonu = new frmMasaRezervasyonu(_masaId);
+            frmmasarezervasyonu.ShowDialog();
+            DurumlariYenile();
+            if (frmmasarezervasyonu.islemyapildi)
+            {
+                MasalariGetir();
+            }
+            btnsender = null;
         }
 
         //private void Btn_Click(object sender, EventArgs e)

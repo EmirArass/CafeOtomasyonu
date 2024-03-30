@@ -123,6 +123,16 @@ namespace CafeOtomasyonu.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage bo_validation {
+            get {
+                object obj = ResourceManager.GetObject("bo_validation", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage business_cash {
             get {
                 object obj = ResourceManager.GetObject("business_cash", resourceCulture);
@@ -376,6 +386,16 @@ namespace CafeOtomasyonu.WinForms.Properties {
         internal static DevExpress.Utils.Svg.SvgImage time {
             get {
                 object obj = ResourceManager.GetObject("time", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage trackingchanges_accept {
+            get {
+                object obj = ResourceManager.GetObject("trackingchanges_accept", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
