@@ -104,11 +104,15 @@ namespace CafeOtomasyonu.WinForms.Masalar
                 masalar = masalardal.GetByFilter(context, m => m.Id == _masaId);
                 masalar.SatisKodu = modelSatisKodu.SatisTanimi + modelSatisKodu.Sayi;
                 masalar.Durumu = true;
-                modelSatisKodu.Sayi++;
+                masalar.RezerveDurmu = false;
+                var sayiarttir = context.SatisKodu.First();
+                sayiarttir.Sayi++;
+                //modelSatisKodu.Sayi++;
                 masalardal.Save(context);
                 btnsender = null;
                 DurumlariYenile();
-                MasalariGetir();    
+                MasalariGetir();
+                modelSatisKodu = context.SatisKodu.First();
             }
         }
 

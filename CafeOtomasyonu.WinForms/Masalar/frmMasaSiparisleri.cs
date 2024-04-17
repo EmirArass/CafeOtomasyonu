@@ -11,7 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeOtomasyon.Entities.DataAccessLayer;
 using CafeOtomasyon.Entities.Models;
+using CafeOtomasyonu.WinForms.Odemeler;
 using CafeOtomasyonu.WinForms.Urunler;
+using System.Diagnostics.Eventing.Reader;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace CafeOtomasyonu.WinForms.Masalar
 {
@@ -22,6 +25,11 @@ namespace CafeOtomasyonu.WinForms.Masalar
         private MasaHareketleriDAL masahareketleridal = new MasaHareketleriDAL();
         private string _satiskodu = null;
         private int? _masaId;
+        private OdemeHareketleriDAL odemehareketleriDal = new OdemeHareketleriDAL();
+        private Satislar satislar;
+        private SatislarDAL satislardal = new SatislarDAL();
+        private CafeOtomasyon.Entities.Models.Masalar masalar;
+        private MasalarDAL masalardal = new MasalarDAL();
 
         public frmMasaSiparisleri(int? masaId = null, string masaAdi = null, string satisKodu = null)
         {
@@ -37,7 +45,24 @@ namespace CafeOtomasyonu.WinForms.Masalar
             if (_masaId!= null)
             {
                 lblBaslik.Text = masaAdi+" Siparişleri ";
+                masalar = masalardal.GetByFilter(context, m => m.Id == _masaId);
             }
+            satislar = satislardal.GetByFilter(context, s=>s.SatisKodu==_satiskodu);
+            if (satislar != null)
+            {
+                lookUpMusteri.EditValue = satislar.MusteriId;
+                txtSatisAciklama.Text = satislar.Aciklama;
+                dateEdit1.Text = satislar.SonIslemTarihi.ToString("dd.MM.yyyy");
+            }
+        }
+        void Sonuclandir()
+        {
+            masalar.SatisKodu = null;
+            masalar.Durumu = false;
+            masalar.Islem = null;
+            masalar.KullaniciId = null;
+            masalardal.AddOrUpdate(context, masalar);
+            masalardal.Save(context);
         }
 
         void hesapla()
@@ -110,6 +135,109 @@ namespace CafeOtomasyonu.WinForms.Masalar
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             hesapla();
+        }
+
+        private void btnYenile_Click(object sender, EventArgs e)
+        {
+            hesapla();
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            if (gridView1.RowCount >0)
+            {
+                if (dateEdit1.EditValue != null)
+                {
+                    if (satislar == null)
+                    {
+                        satislar = new Satislar();
+                        satislar.SatisKodu = _satiskodu;
+                    }
+                    satislar.MusteriId = (int?)lookUpMusteri.EditValue;
+                    satislar.Aciklama = txtSatisAciklama.Text;
+                    satislar.SonIslemTarihi = Convert.ToDateTime(dateEdit1.EditValue);
+                    satislar.Kalan = calcKalan.Value;
+                    satislar.Odenen = calcOdenen.Value;
+                    satislar.Tutar = calcToplam.Value;
+                    satislar.IndirimToplami = calcIndirimToplami.Value;
+                    satislardal.AddOrUpdate(context, satislar);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir tarih giriniz","Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Herhangi kayıt bulunamadı", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        
+        private void btnNakit_Click(object sender, EventArgs e)
+        {
+            //frmOdemeler frmodemeler = new frmOdemeler("Nakit", _satiskodu);
+            //frmodemeler.ShowDialog();
+        }
+
+        private void btnKrediKarti_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOdemeler_Click(object sender, EventArgs e)
+        {
+            var btn = sender as SimpleButton;
+            frmOdemeler frmodemeler = new frmOdemeler(btn.Text, _satiskodu);
+            frmodemeler.ShowDialog();
+        }
+
+        private void repositorySiparisSil_ButtonClick_1(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili Siparişin silinmesini olnaylıyor muusunuz?","Uyarı", MessageBoxButtons.YesNo,MessageBoxIcon.Stop)== DialogResult.Yes)
+            {
+                gridView1.DeleteSelectedRows();
+                hesapla();
+            }
+        }
+
+        private void repositoryOdemeSil_ButtonClick_1(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (MessageBox.Show("Seçili ÖDemenin silinmesini olnaylıyor muusunuz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes)
+            {
+                gridViewOdemeler.DeleteSelectedRows();
+                hesapla();
+            }
+        }
+
+        private void btnSonuclandir_Click(object sender, EventArgs e)
+        {
+            if (_masaId != null)
+            {
+                if (calcKalan.Value > 0)
+                {
+
+                    if (MessageBox.Show("Seçilen müşteriye borç işlemi kaydedilecektir, devam edilsin mi?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
+                    {
+                        if (satislar != null)
+                        {
+                            if (satislar.MusteriId == null)
+                            {
+                                MessageBox.Show("Önce müşteri seçiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                Sonuclandir();
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+                else if(calcKalan.Value == 0)
+                {
+
+                }
+            }
         }
     }
 }
