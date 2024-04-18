@@ -190,6 +190,14 @@ namespace CafeOtomasyonu.WinForms.Masalar
             var btn = sender as SimpleButton;
             frmOdemeler frmodemeler = new frmOdemeler(btn.Text, _satiskodu);
             frmodemeler.ShowDialog();
+            if (frmodemeler.kaydedildi)
+            {
+                if (odemehareketleriDal.AddOrUpdate(context,frmodemeler._odemehareketleri))
+                {
+                    gridViewOdemeler.RefreshData();
+                    hesapla();
+                }
+            }
         }
 
         private void repositorySiparisSil_ButtonClick_1(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -238,6 +246,21 @@ namespace CafeOtomasyonu.WinForms.Masalar
 
                 }
             }
+        }
+
+        private void repositoryFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+        }
+
+        private void Fiyatlar(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void gridViewOdemeler_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            hesapla();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -38,6 +39,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupIslemler = new DevExpress.XtraEditors.GroupControl();
             this.btnSonuclandir = new DevExpress.XtraEditors.SimpleButton();
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
@@ -71,6 +77,7 @@
             this.colUrunAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMiktari1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBirimFiyati1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryFiyat = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.colIndirimTutari1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colmnTutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAciklama1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -99,6 +106,15 @@
             this.panelControlOdemeler = new DevExpress.XtraEditors.PanelControl();
             this.btnKrediKarti = new DevExpress.XtraEditors.SimpleButton();
             this.btnNakit = new DevExpress.XtraEditors.SimpleButton();
+            this.radialMenu1 = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
+            this.BarFiyat1 = new DevExpress.XtraBars.BarButtonItem();
+            this.BarFiyat2 = new DevExpress.XtraBars.BarButtonItem();
+            this.BarFiyat3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupIslemler)).BeginInit();
             this.groupIslemler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -115,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositorySiparisSil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryFiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSatisAciklama.Properties)).BeginInit();
@@ -127,6 +144,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryOdemeSil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlOdemeler)).BeginInit();
             this.panelControlOdemeler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radialMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupIslemler
@@ -458,7 +477,8 @@
             this.gridControlSiparisler.MainView = this.gridView1;
             this.gridControlSiparisler.Name = "gridControlSiparisler";
             this.gridControlSiparisler.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositorySiparisSil});
+            this.repositorySiparisSil,
+            this.repositoryFiyat});
             this.gridControlSiparisler.Size = new System.Drawing.Size(1441, 357);
             this.gridControlSiparisler.TabIndex = 0;
             this.gridControlSiparisler.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -564,14 +584,25 @@
             // colBirimFiyati1
             // 
             this.colBirimFiyati1.Caption = "Birim Fiyatı";
+            this.colBirimFiyati1.ColumnEdit = this.repositoryFiyat;
             this.colBirimFiyati1.DisplayFormat.FormatString = "C2";
             this.colBirimFiyati1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBirimFiyati1.FieldName = "BirimFiyati";
             this.colBirimFiyati1.MinWidth = 25;
             this.colBirimFiyati1.Name = "colBirimFiyati1";
+            this.colBirimFiyati1.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.colBirimFiyati1.Visible = true;
             this.colBirimFiyati1.VisibleIndex = 3;
             this.colBirimFiyati1.Width = 83;
+            // 
+            // repositoryFiyat
+            // 
+            this.repositoryFiyat.AutoHeight = false;
+            editorButtonImageOptions2.SvgImage = global::CafeOtomasyonu.WinForms.Properties.Resources.bo_price3;
+            this.repositoryFiyat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.repositoryFiyat.Name = "repositoryFiyat";
+            this.repositoryFiyat.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryFiyat_ButtonClick);
             // 
             // colIndirimTutari1
             // 
@@ -779,6 +810,7 @@
             this.colTarih});
             this.gridViewOdemeler.GridControl = this.gridControlOdemeler;
             this.gridViewOdemeler.Name = "gridViewOdemeler";
+            this.gridViewOdemeler.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridViewOdemeler_RowCellStyle);
             // 
             // colOdemeSil
             // 
@@ -793,9 +825,9 @@
             // repositoryOdemeSil
             // 
             this.repositoryOdemeSil.AutoHeight = false;
-            editorButtonImageOptions2.Image = global::CafeOtomasyonu.WinForms.Properties.Resources.cancel_16x16;
+            editorButtonImageOptions3.Image = global::CafeOtomasyonu.WinForms.Properties.Resources.cancel_16x16;
             this.repositoryOdemeSil.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryOdemeSil.Name = "repositoryOdemeSil";
             this.repositoryOdemeSil.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryOdemeSil.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryOdemeSil_ButtonClick_1);
@@ -894,6 +926,84 @@
             this.btnNakit.Text = "Nakit";
             this.btnNakit.Click += new System.EventHandler(this.btnOdemeler_Click);
             // 
+            // radialMenu1
+            // 
+            this.radialMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.BarFiyat1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.BarFiyat2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.BarFiyat3)});
+            this.radialMenu1.Manager = this.barManager1;
+            this.radialMenu1.Name = "radialMenu1";
+            // 
+            // BarFiyat1
+            // 
+            this.BarFiyat1.Caption = "Fiyat-1";
+            this.BarFiyat1.Id = 0;
+            this.BarFiyat1.ImageOptions.SvgImage = global::CafeOtomasyonu.WinForms.Properties.Resources.bo_price;
+            this.BarFiyat1.Name = "BarFiyat1";
+            this.BarFiyat1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Fiyatlar);
+            // 
+            // BarFiyat2
+            // 
+            this.BarFiyat2.Caption = "Fiyat-2";
+            this.BarFiyat2.Id = 1;
+            this.BarFiyat2.ImageOptions.SvgImage = global::CafeOtomasyonu.WinForms.Properties.Resources.bo_price1;
+            this.BarFiyat2.Name = "BarFiyat2";
+            this.BarFiyat2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Fiyatlar);
+            // 
+            // BarFiyat3
+            // 
+            this.BarFiyat3.Caption = "Fiyat-3";
+            this.BarFiyat3.Id = 2;
+            this.BarFiyat3.ImageOptions.SvgImage = global::CafeOtomasyonu.WinForms.Properties.Resources.bo_price2;
+            this.BarFiyat3.Name = "BarFiyat3";
+            this.BarFiyat3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Fiyatlar);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.BarFiyat1,
+            this.BarFiyat2,
+            this.BarFiyat3});
+            this.barManager1.MaxItemId = 3;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1548, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 810);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1548, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 810);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1548, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 810);
+            // 
             // frmMasaSiparisleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -903,6 +1013,10 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.lblBaslik);
             this.Controls.Add(this.groupIslemler);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMasaSiparisleri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Masa Siparişleri";
@@ -922,6 +1036,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositorySiparisSil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryFiyat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSatisAciklama.Properties)).EndInit();
@@ -934,7 +1049,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryOdemeSil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlOdemeler)).EndInit();
             this.panelControlOdemeler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radialMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1000,5 +1118,15 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryOdemeSil;
         private DevExpress.XtraGrid.Columns.GridColumn colUrunAdi;
         private DevExpress.XtraGrid.Columns.GridColumn colmnTutar;
+        private DevExpress.XtraBars.Ribbon.RadialMenu radialMenu1;
+        private DevExpress.XtraBars.BarButtonItem BarFiyat1;
+        private DevExpress.XtraBars.BarButtonItem BarFiyat2;
+        private DevExpress.XtraBars.BarButtonItem BarFiyat3;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryFiyat;
     }
 }

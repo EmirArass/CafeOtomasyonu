@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using CafeOtomasyon.Entities.Models;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,8 @@ namespace CafeOtomasyonu.WinForms.Odemeler
     {
         private string _satiskodu;
         private string _odemeturu;
-
+        public OdemeHareketleri _odemehareketleri;
+        public bool kaydedildi;
 
         public frmOdemeler(string odemeturu, string satiskodu)
         {
@@ -34,7 +36,21 @@ namespace CafeOtomasyonu.WinForms.Odemeler
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+            _odemehareketleri = new OdemeHareketleri
+            {
+                SatisKodu = _satiskodu,
+                OdemeTuru = _odemeturu,
+                Odenen = calcOdenecekTutar.Value,
+                Aciklama = txtAciklama.Text,
+                Tarih = Convert.ToDateTime(dateTarih.Text)
+            };
+            kaydedildi = true;
+            this.Close();
+        }
 
+        private void btnKapat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

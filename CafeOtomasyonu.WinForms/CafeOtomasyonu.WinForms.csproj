@@ -380,6 +380,18 @@
   <ItemGroup>
     <None Include="Resources\checkbox.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bo_price.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bo_price1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bo_price2.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bo_price3.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
